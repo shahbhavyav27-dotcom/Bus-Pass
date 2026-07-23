@@ -337,8 +337,10 @@
   setInterval(updateClock, 1000);
 
   // Pull data from the URL query string (set on upload.html), fall back to defaultsconst name = sessionStorage.getItem("name");
+const name = sessionStorage.getItem("name");
 const stop = sessionStorage.getItem("stop");
 const photo = sessionStorage.getItem("photo");
+const enrollment = sessionStorage.getItem("enrollment");
 
 if (name)
     document.getElementById("previewName").textContent = name;
@@ -348,6 +350,9 @@ if (stop)
 
 if (photo)
     document.getElementById("previewPhoto").src = photo;
+
+if (enrollment)
+    document.getElementById("previewEnrollment").textContent = enrollment;
 </script>
 
 </body>
