@@ -250,7 +250,7 @@
 <div class="demo-note">
   UI demo only — sample layout, no real pass. Preview data comes from this browser tab's session only.
 </div>
-<div class="back-link"><a href="upload.html">&#8592; Edit details</a></div>
+<div class="back-link"><a href="index.html">&#8592; Edit details</a></div>
 
 <div class="phone">
 
@@ -285,13 +285,13 @@
       </div>
 
       <div class="name" id="previewName">STUDENT NAME HERE</div>
-      <div class="subline">(Sem - X | 0000000000 | SAMPLE-PROGRAM)</div>
+      <div class="subline">(Sem - 4 | 2403031240126 | B-tech)</div>
 
       <div class="row-label">Pickup Point</div>
       <div class="row-value" id="previewStop">Sample Bus Stop, City Depot</div>
 
       <div class="row-label">Shift &amp; Timings</div>
-      <div class="row-value">GENERAL SHIFT (09:00 AM to 04:30 PM)</div>
+      <div class="row-value">Morning SHIFT (07:30 AM to 02:10 PM)</div>
 
       <div class="row-label">Duration</div>
       <div class="row-value">01-07-2026 to 30-06-2027</div>
@@ -302,7 +302,7 @@
       <div class="fees-row">
         <div class="fees-col">
           <div class="row-label">Fees Amount</div>
-          <div class="amount blue">₹ 00,000</div>
+          <div class="amount blue">₹ 25,000</div>
         </div>
         <div class="fees-col">
           <div class="row-label">Pending Amount</div>
@@ -336,15 +336,18 @@
   updateClock();
   setInterval(updateClock, 1000);
 
-  // Pull data from the URL query string (set on upload.html), fall back to defaults
-  const urlParams = new URLSearchParams(window.location.search);
-  const name = urlParams.get('name');
-  const stop = urlParams.get('stop');
-  const photo = urlParams.get('photo');
+  // Pull data from the URL query string (set on upload.html), fall back to defaultsconst name = sessionStorage.getItem("name");
+const stop = sessionStorage.getItem("stop");
+const photo = sessionStorage.getItem("photo");
 
-  if(name) document.getElementById('previewName').textContent = name;
-  if(stop) document.getElementById('previewStop').textContent = stop;
-  if(photo) document.getElementById('previewPhoto').src = photo;
+if (name)
+    document.getElementById("previewName").textContent = name;
+
+if (stop)
+    document.getElementById("previewStop").textContent = stop;
+
+if (photo)
+    document.getElementById("previewPhoto").src = photo;
 </script>
 
 </body>
