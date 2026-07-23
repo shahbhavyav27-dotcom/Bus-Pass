@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport Pass Preview</title>
+<style>
+  :root{
+    --navy:#0e1c2f;
+    --pill-blue:#3f7bb5;
+    --pill-blue-dark:#356a9e;
+    --card-blue-1:#dbe6f0;
+    --card-blue-2:#eef3f8;
+    --text-dark:#1c2530;
+    --text-mid:#5b6b7a;
+    --blue-amount:#2f6fb0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Trebuchet MS','Segoe UI',Verdana,sans-serif;
+    background:#f0f2f5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:24px 12px 60px;
+  }
+
+  .demo-note{
+    max-width:430px;
+    width:100%;
+    background:#fff8e1;
+    border:1px solid #f0d98c;
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:12.5px;
+    color:#6b5a1e;
+    margin-bottom:16px;
+    line-height:1.4;
+  }
+  .back-link{
+    max-width:430px;
+    width:100%;
+    margin-bottom:12px;
+  }
+  .back-link a{
+    font-size:13px;
+    color:#3f7bb5;
+    text-decoration:none;
+    font-weight:600;
+  }
+
+  .phone{
+    width:100%;
+    max-width:430px;
+    background:#f4f6f9;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 4px 24px rgba(0,0,0,0.18);
+  }
+
+  .statusbar{
+    background:#0a1220;
+    color:#fff;
+    font-size:13px;
+    padding:8px 16px 4px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .topbar{
+    background:var(--navy);
+    color:#fff;
+    padding:14px 16px 18px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .topbar .back{
+    font-size:20px;
+    line-height:1;
+  }
+  .topbar .title{
+    flex:1;
+    font-size:19px;
+    font-weight:700;
+  }
+  .topbar .pay{
+    font-size:15px;
+    font-weight:700;
+  }
+
+  .tabs{
+    background:#fff;
+    display:flex;
+    align-items:center;
+    padding:14px 16px 10px;
+    gap:22px;
+    font-size:14.5px;
+    color:#8a97a3;
+    border-bottom:1px solid #eef0f2;
+  }
+  .tabs .active{
+    color:var(--text-dark);
+    font-weight:700;
+    position:relative;
+    padding-bottom:10px;
+  }
+  .tabs .active::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:3px;
+    background:var(--text-dark);
+    border-radius:2px;
+  }
+  .tabs .badge{
+    background:#6b7a8a;
+    color:#fff;
+    font-size:11px;
+    border-radius:50%;
+    width:18px;height:18px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:4px;
+  }
+
+  .card-wrap{
+    padding:14px 16px 20px;
+  }
+  .card{
+    position:relative;
+    border-radius:14px;
+    padding:20px 18px 22px;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.35) 0 2px, transparent 2px 26px),
+      linear-gradient(160deg, var(--card-blue-1), var(--card-blue-2));
+    overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:14px;
+  }
+  .photo-box{
+    width:88px;
+    height:88px;
+    border-radius:6px;
+    overflow:hidden;
+    background:#c7d2dc;
+    flex-shrink:0;
+    box-shadow:0 1px 3px rgba(0,0,0,0.15);
+  }
+  .photo-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .top-right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:8px;
+  }
+  .bus-icon{
+    font-size:34px;
+    line-height:1;
+  }
+  .pill{
+    background:var(--pill-blue);
+    color:#fff;
+    font-size:12.5px;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .pill.dark{
+    background:var(--pill-blue-dark);
+  }
+  .pill .light{
+    font-weight:400;
+    opacity:0.9;
+  }
+
+  .name{
+    font-size:19px;
+    font-weight:800;
+    color:var(--text-dark);
+    text-transform:uppercase;
+    margin-bottom:2px;
+  }
+  .subline{
+    font-size:14.5px;
+    color:var(--text-dark);
+    margin-bottom:12px;
+  }
+
+  .row-label{
+    font-size:13px;
+    color:var(--text-mid);
+    margin-top:8px;
+  }
+  .row-value{
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--text-dark);
+  }
+
+  .fees-row{
+    display:flex;
+    gap:26px;
+    margin-top:14px;
+  }
+  .fees-col .row-label{margin-top:0;}
+  .fees-col .amount{
+    font-size:16px;
+    font-weight:800;
+  }
+  .amount.blue{color:var(--blue-amount);}
+  .amount.dark{color:var(--text-dark);}
+
+  .datetime{
+    text-align:center;
+    margin:20px 0 22px;
+  }
+  .datetime .date{
+    color:#3d4f66;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:0.5px;
+    margin-bottom:2px;
+  }
+  .datetime .time{
+    color:#243247;
+    font-weight:800;
+    font-size:34px;
+    letter-spacing:2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-note">
+  UI demo only — sample layout, no real pass. Preview data comes from this browser tab's session only.
+</div>
+<div class="back-link"><a href="upload.html">&#8592; Edit details</a></div>
+
+<div class="phone">
+
+  <div class="statusbar">
+    <span>12:41</span>
+    <span>📶 📶 🔋</span>
+  </div>
+
+  <div class="topbar">
+    <span class="back">&#8592;</span>
+    <span class="title">Transport Summary</span>
+    <span class="pay">Pay Fees</span>
+  </div>
+
+  <div class="tabs">
+    <span class="active">Bus Pass</span>
+    <span>Rules &amp; Regulations</span>
+    <span>Receipt <span class="badge">1</span></span>
+  </div>
+
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-top">
+        <div class="photo-box">
+          <img id="previewPhoto" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88'%3E%3Crect width='88' height='88' fill='%23c7d2dc'/%3E%3Ctext x='50%25' y='53%25' font-size='30' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%F0%9F%91%A4%3C/text%3E%3C/svg%3E" alt="Passenger photo">
+        </div>
+        <div class="top-right">
+          <div class="bus-icon">🚌</div>
+          <div class="pill">Active</div>
+          <div class="pill dark"><span class="light">Bus Pass No.</span> SAMPLE/001</div>
+        </div>
+      </div>
+
+      <div class="name" id="previewName">STUDENT NAME HERE</div>
+      <div class="subline">(Sem - X | 0000000000 | SAMPLE-PROGRAM)</div>
+
+      <div class="row-label">Pickup Point</div>
+      <div class="row-value" id="previewStop">Sample Bus Stop, City Depot</div>
+
+      <div class="row-label">Shift &amp; Timings</div>
+      <div class="row-value">GENERAL SHIFT (09:00 AM to 04:30 PM)</div>
+
+      <div class="row-label">Duration</div>
+      <div class="row-value">01-07-2026 to 30-06-2027</div>
+
+      <div class="row-label">Route</div>
+      <div class="row-value">9</div>
+
+      <div class="fees-row">
+        <div class="fees-col">
+          <div class="row-label">Fees Amount</div>
+          <div class="amount blue">₹ 00,000</div>
+        </div>
+        <div class="fees-col">
+          <div class="row-label">Pending Amount</div>
+          <div class="amount dark">₹ 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="datetime">
+    <div class="date" id="liveDate">--</div>
+    <div class="time" id="liveTime">--:--:--</div>
+  </div>
+
+</div>
+
+<script>
+  // Live clock
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function updateClock(){
+    const now = new Date();
+    const dd = pad(now.getDate());
+    const mm = pad(now.getMonth()+1);
+    const yyyy = now.getFullYear();
+    const hh = pad(now.getHours());
+    const min = pad(now.getMinutes());
+    const ss = pad(now.getSeconds());
+    document.getElementById('liveDate').textContent = `${dd}-${mm}-${yyyy}`;
+    document.getElementById('liveTime').textContent = `${hh}:${min}:${ss}`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Pull data from the URL query string (set on upload.html), fall back to defaults
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get('name');
+  const stop = urlParams.get('stop');
+  const photo = urlParams.get('photo');
+
+  if(name) document.getElementById('previewName').textContent = name;
+  if(stop) document.getElementById('previewStop').textContent = stop;
+  if(photo) document.getElementById('previewPhoto').src = photo;
+</script>
+
+</body>
+</html>
