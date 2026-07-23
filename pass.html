@@ -247,17 +247,7 @@
 </head>
 <body>
 
-<div class="demo-note">
-  UI demo only — sample layout, no real pass. Preview data comes from this browser tab's session only.
-</div>
-<div class="back-link"><a href="index.html">&#8592; Edit details</a></div>
-
 <div class="phone">
-
-  <div class="statusbar">
-    <span>12:41</span>
-    <span>📶 📶 🔋</span>
-  </div>
 
   <div class="topbar">
     <span class="back">&#8592;</span>
@@ -277,10 +267,13 @@
         <div class="photo-box">
           <img id="previewPhoto" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88'%3E%3Crect width='88' height='88' fill='%23c7d2dc'/%3E%3Ctext x='50%25' y='53%25' font-size='30' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%F0%9F%91%A4%3C/text%3E%3C/svg%3E" alt="Passenger photo">
         </div>
+
         <div class="top-right">
           <div class="bus-icon">🚌</div>
           <div class="pill">Active</div>
-          <div class="pill dark"><span class="light">Bus Pass No.</span> SAMPLE/001</div>
+          <div class="pill dark">
+            <span class="light">Bus Pass No.</span> SAMPLE/001
+          </div>
         </div>
       </div>
 
@@ -288,13 +281,19 @@
       <div class="subline">(Sem - 4 | 2403031240126 | B-tech)</div>
 
       <div class="row-label">Pickup Point</div>
-      <div class="row-value" id="previewStop">Sample Bus Stop, City Depot</div>
+      <div class="row-value" id="previewStop">
+        Sample Bus Stop, City Depot
+      </div>
 
       <div class="row-label">Shift &amp; Timings</div>
-      <div class="row-value">Morning SHIFT (07:30 AM to 02:10 PM)</div>
+      <div class="row-value">
+        Morning SHIFT (07:30 AM to 02:10 PM)
+      </div>
 
       <div class="row-label">Duration</div>
-      <div class="row-value">01-07-2026 to 30-06-2027</div>
+      <div class="row-value">
+        01-07-2026 to 30-06-2027
+      </div>
 
       <div class="row-label">Route</div>
       <div class="row-value">9</div>
@@ -304,6 +303,7 @@
           <div class="row-label">Fees Amount</div>
           <div class="amount blue">₹ 25,000</div>
         </div>
+
         <div class="fees-col">
           <div class="row-label">Pending Amount</div>
           <div class="amount dark">₹ 0</div>
@@ -318,7 +318,6 @@
   </div>
 
 </div>
-
 <script>
   // Live clock
   function pad(n){ return n.toString().padStart(2,'0'); }
