@@ -108,8 +108,9 @@
   const photoInput = document.getElementById('photoInput');
   const nameInput = document.getElementById('nameInput');
   const stopInput = document.getElementById('stopInput');
-  const goBtn = document.getElementById('goBtn');
-  const enrollment = document.getElementById("enrollmentInput").value;
+  const goBtn = document.getElementById('goBtn'); 
+  const enrollmentInput = document.getElementById("enrollmentInput");
+ 
 
   let photoDataUrl = null;
 
@@ -141,7 +142,7 @@ goBtn.addEventListener('click', () => {
 
     sessionStorage.setItem("name", nameInput.value || "STUDENT NAME HERE");
     sessionStorage.setItem("stop", stopInput.value || "Sample Bus Stop, City Depot");
-    sessionStorage.setItem("enrollment", enrollment);
+    sessionStorage.setItem("enrollment", enrollmentInput.value || "2403031240126");
 
     if (photoDataUrl) {
         sessionStorage.setItem("photo", photoDataUrl);
