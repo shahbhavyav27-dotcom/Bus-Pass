@@ -278,7 +278,11 @@
       </div>
 
       <div class="name" id="previewName">STUDENT NAME HERE</div>
-      <div class="subline">(Sem - 4 | 2403031240126 | B-tech)</div>
+<div class="subline">
+    (Sem - 4 |
+    <span id="previewEnrollment">2403031240126</span>
+    | B-tech)
+</div>
 
       <div class="row-label">Pickup Point</div>
       <div class="row-value" id="previewStop">
@@ -335,7 +339,6 @@
   updateClock();
   setInterval(updateClock, 1000);
 
-  // Pull data from the URL query string (set on upload.html), fall back to defaultsconst name = sessionStorage.getItem("name");
 const name = sessionStorage.getItem("name");
 const stop = sessionStorage.getItem("stop");
 const photo = sessionStorage.getItem("photo");
