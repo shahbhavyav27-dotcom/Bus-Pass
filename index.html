@@ -133,15 +133,19 @@
     reader.readAsDataURL(file);
   });
 
-  goBtn.addEventListener('click', () => {
-    const params = new URLSearchParams();
-    params.set('name', nameInput.value || 'STUDENT NAME HERE');
-    params.set('stop', stopInput.value || 'Sample Bus Stop, City Depot');
-    if(photoDataUrl){
-      params.set('photo', photoDataUrl);
+goBtn.addEventListener('click', () => {
+
+    sessionStorage.setItem("name", nameInput.value || "STUDENT NAME HERE");
+    sessionStorage.setItem("stop", stopInput.value || "Sample Bus Stop, City Depot");
+
+    if (photoDataUrl) {
+        sessionStorage.setItem("photo", photoDataUrl);
+    } else {
+        sessionStorage.removeItem("photo");
     }
-    window.location.href = 'pass.html?' + params.toString();
-  });
+
+    window.location.href = "pass.html";
+});
 </script>
 
 </body>
