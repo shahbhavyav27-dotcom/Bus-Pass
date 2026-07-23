@@ -98,6 +98,9 @@
     <label>Stop Name</label>
     <input type="text" id="stopInput" value="Sample Bus Stop, City Depot">
   </div>
+ <div id="previewEnrollment">Enrollment Here</div>
+ <input type="text" id="enrollmentInput" placeholder="Enrollment Number">
+
   <button class="go-btn" id="goBtn">View Pass Preview</button>
 </div>
 
@@ -106,6 +109,7 @@
   const nameInput = document.getElementById('nameInput');
   const stopInput = document.getElementById('stopInput');
   const goBtn = document.getElementById('goBtn');
+  const enrollment = document.getElementById("enrollmentInput").value;
 
   let photoDataUrl = null;
 
@@ -137,6 +141,7 @@ goBtn.addEventListener('click', () => {
 
     sessionStorage.setItem("name", nameInput.value || "STUDENT NAME HERE");
     sessionStorage.setItem("stop", stopInput.value || "Sample Bus Stop, City Depot");
+    sessionStorage.setItem("enrollment", enrollment);
 
     if (photoDataUrl) {
         sessionStorage.setItem("photo", photoDataUrl);
